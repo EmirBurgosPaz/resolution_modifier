@@ -28,8 +28,9 @@ int main(int argc, char** argv)
 
    vector<Mat>images{ matSrc, matRes }; // and so forth
 
-   displayWindows(images);
+   displayWindows(images, WINDOW_GUI_NORMAL);
    imwrite("fixed.jpeg", matRes);
+
 	cout << "Press 'w' to quit..." << endl;
 	while (char(waitKey(1)) != 'w') {}
 	
