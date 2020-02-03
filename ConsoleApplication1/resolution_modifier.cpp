@@ -6,23 +6,23 @@ using namespace std;
 using namespace cv;
 
 
-Mat test;
-String path = "C:/Users/NVIDIA/Desktop/vision_por_computadora/Libreria de programas/imagen_reporte_resolucion/";
-String name = "Res_1.5_L";
-double resChange = 1.5;
+
 
 int main(int argc, char** argv)
 {
+    //Se escribe los posibles cambios de resolucion, 1.5, .5, .25, .125
+    double resChange = 1.5;
+    //Cargamos la imagen
 	Mat matSrc = imread("../../resolution_modifier/resolution_test.png", IMREAD_GRAYSCALE);
 	Mat matRes;
-
+    //Realizamos la modificicacion de las resoluciones con INTER_NEAREST, INTER_LINEAR, INTER_CUBIC
    resize(matSrc, matRes, Size(), resChange, resChange, INTER_LINEAR);
 
-   vector<Mat>images{ matSrc, matRes }; // and so forth
+   //Se muestra la imagen
    namedWindow("Imagen original", WINDOW_AUTOSIZE);
    imshow("Imagen original", matSrc);
    imshow("Res_1.5_NN", matRes);
-   imwrite(path + name +".png", matRes);
+   //presionar ESC para salir
 	while (char(waitKey(1)) != 27) {}
 	
 	return 0;
